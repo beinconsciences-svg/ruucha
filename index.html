@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruucha - 宝石図鑑</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .filters input:focus,
+    .filters select:focus {
+      outline: none;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .gemstones-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .gemstone-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gemstone-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .gemstone-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+
+    .gemstone-card h2 {
+      font-size: 1.5em;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .gemstone-card .english-name {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 12px;
+    }
+
+    .gemstone-card .rarity {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .rarity.超レア {
+      background: #ff6b6b;
+      color: white;
+    }
+
+    .rarity.レア {
+      background: #ffa94d;
+      color: white;
+    }
+
+    .rarity.やや一般的 {
+      background: #74c0fc;
+      color: white;
+    }
+
+    .rarity.一般的 {
+      background: #51cf66;
+      color: white;
+    }
+
+    .gemstone-info {
+      font-size: 0.95em;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .gemstone-info p {
+      margin: 5px 0;
+    }
+
+    .price-range {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 6px;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    /* モーダル */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .gemstones-container {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        flex-direction: column;
+      }
+
+      .filters input,
+      .filters select {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💎 Ruucha - 宝石図鑑</h1>
+    <p>世界の美しい宝石を探索しましょう</p>
+  </header>
+
+  <main>
+    <section class="filters">
+      <input type="text" id="searchInput" placeholder="宝石名で検索...">
+      <select id="rarityFilter">
+        <option value="">すべてのレアリティ</option>
+        <option value="超レア">超レア</option>
+        <option value="レア">レア</option>
+        <option value="やや一般的">やや一般的</option>
+        <option value="一般的">一般的</option>
+      </select>
+    </section>
+
+    <section class="gemstones-container" id="gemstonesContainer">
+      <!-- 宝石カードがここに動的に挿入されます -->
+    </section>
+  </main>
+
+  <!-- モーダル -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    // 宝石データ
+    const gemstonesData = [
+      {
+        "id": 1,
+        "name": "ダイヤモンド",
+        "englishName": "Diamond",
+        "category": "炭素鉱物",
+        "rarity": "超レア",
+        "hardness": 10,
+        "colors": ["無色", "黄色", "ピンク", "青"],
+        "priceRange": {
+          "min": 50000,
+          "max": 5000000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "地球上で最も硬い天然鉱物。高い屈折率と透明性が特徴。",
+        "origin": ["ロシア", "ボツワナ", "南アフリカ"],
+        "uses": ["宝飾品", "研磨剤", "工業用途"]
+      },
+      {
+        "id": 2,
+        "name": "ルビー",
+        "englishName": "Ruby",
+        "category": "コランダム",
+        "rarity": "レア",
+        "hardness": 9,
+        "colors": ["赤"],
+        "priceRange": {
+          "min": 10000,
+          "max": 3000000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "赤い色が特徴的な貴石。アルミナに微量のクロムが含まれることで赤色になります。",
+        "origin": ["ミャンマー", "タイ", "スリランカ"],
+        "uses": ["宝飾品", "レーザー"]
+      },
+      {
+        "id": 3,
+        "name": "サファイア",
+        "englishName": "Sapphire",
+        "category": "コランダム",
+        "rarity": "レア",
+        "hardness": 9,
+        "colors": ["青", "ピンク", "黄色", "紫"],
+        "priceRange": {
+          "min": 5000,
+          "max": 2000000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "青い宝石として知られている。実はコランダムの青い変種です。",
+        "origin": ["オーストラリア", "スリランカ", "タイ"],
+        "uses": ["宝飾品", "時計", "光学機器"]
+      },
+      {
+        "id": 4,
+        "name": "エメラルド",
+        "englishName": "Emerald",
+        "category": "ベリル",
+        "rarity": "レア",
+        "hardness": 7.5,
+        "colors": ["緑"],
+        "priceRange": {
+          "min": 8000,
+          "max": 1500000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "緑色が美しい宝石。クロムやバナジウムの影響で緑色になります。",
+        "origin": ["コロンビア", "ザンビア", "ブラジル"],
+        "uses": ["宝飾品"]
+      },
+      {
+        "id": 5,
+        "name": "アメジスト",
+        "englishName": "Amethyst",
+        "category": "水晶",
+        "rarity": "一般的",
+        "hardness": 7,
+        "colors": ["紫"],
+        "priceRange": {
+          "min": 500,
+          "max": 50000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "紫色の水晶。手頃な価格で人気があります。",
+        "origin": ["ウルグアイ", "ブラジル", "ザンビア"],
+        "uses": ["宝飾品", "装飾品"]
+      },
+      {
+        "id": 6,
+        "name": "トパーズ",
+        "englishName": "Topaz",
+        "category": "珪酸塩鉱物",
+        "rarity": "やや一般的",
+        "hardness": 8,
+        "colors": ["無色", "青", "黄色", "ピンク"],
+        "priceRange": {
+          "min": 1000,
+          "max": 200000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "透明度が高く、様々な色があります。熱処理で色が変わることもあります。",
+        "origin": ["ブラジル", "日本", "スリランカ"],
+        "uses": ["宝飾品", "装飾品"]
+      },
+      {
+        "id": 7,
+        "name": "アクアマリン",
+        "englishName": "Aquamarine",
+        "category": "ベリル",
+        "rarity": "やや一般的",
+        "hardness": 7.5,
+        "colors": ["青緑"],
+        "priceRange": {
+          "min": 2000,
+          "max": 300000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "海の色をした宝石。透明度が高く爽やかな印象です。",
+        "origin": ["ブラジル", "ナイジェリア", "パキスタン"],
+        "uses": ["宝飾品"]
+      },
+      {
+        "id": 8,
+        "name": "ガーネット",
+        "englishName": "Garnet",
+        "category": "珪酸塩鉱物",
+        "rarity": "一般的",
+        "hardness": 7,
+        "colors": ["赤", "茶色", "黄色"],
+        "priceRange": {
+          "min": 500,
+          "max": 100000,
+          "currency": "JPY",
+          "unit": "1カラット"
+        },
+        "description": "赤い宝石として古くから知られています。手頃な価格が特徴です。",
+        "origin": ["チェコ", "マダガスカル", "インド"],
+        "uses": ["宝飾品", "研磨剤"]
+      }
+    ];
+
+    let allGemstones = gemstonesData;
+
+    // DOMが読み込まれたときに初期化
+    document.addEventListener('DOMContentLoaded', () => {
+      displayGemstones(allGemstones);
+      setupEventListeners();
+    });
+
+    // イベントリスナーをセットアップ
+    function setupEventListeners() {
+      const searchInput = document.getElementById('searchInput');
+      const rarityFilter = document.getElementById('rarityFilter');
+      const modal = document.getElementById('modal');
+      const closeBtn = document.querySelector('.close');
+
+      searchInput.addEventListener('input', filterGemstones);
+      rarityFilter.addEventListener('change', filterGemstones);
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+      });
+
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('show');
+        }
+      });
+    }
+
+    // 宝石をフィルタリング
+    function filterGemstones() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const rarityFilter = document.getElementById('rarityFilter').value;
+
+      const filtered = allGemstones.filter(gemstone => {
+        const matchesSearch = gemstone.name.toLowerCase().includes(searchTerm) ||
+                             gemstone.englishName.toLowerCase().includes(searchTerm);
+        const matchesRarity = rarityFilter === '' || gemstone.rarity === rarityFilter;
+        return matchesSearch && matchesRarity;
+      });
+
+      displayGemstones(filtered);
+    }
+
+    // 宝石を表示
+    function displayGemstones(gemstones) {
+      const container = document.getElementById('gemstonesContainer');
+      container.innerHTML = '';
+
+      if (gemstones.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: white; font-size: 1.2em;">該当する宝石がありません</p>';
+        return;
+      }
+
+      gemstones.forEach(gemstone => {
+        const card = createGemstoneCard(gemstone);
+        container.appendChild(card);
+      });
+    }
+
+    // 宝石カードを作成
+    function createGemstoneCard(gemstone) {
+      const card = document.createElement('div');
+      card.className = 'gemstone-card';
+      card.innerHTML = `
+        <h2>${gemstone.name}</h2>
+        <p class="english-name">${gemstone.englishName}</p>
+        <span class="rarity ${gemstone.rarity}">${gemstone.rarity}</span>
+        <div class="gemstone-info">
+          <p><strong>カテゴリー:</strong> ${gemstone.category}</p>
+          <p><strong>硬度:</strong> ${gemstone.hardness}</p>
+          <p><strong>色:</strong> ${gemstone.colors.join(', ')}</p>
+          <div class="price-range">
+            ¥${gemstone.priceRange.min.toLocaleString()} - ¥${gemstone.priceRange.max.toLocaleString()} / ${gemstone.priceRange.unit}
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => showModal(gemstone));
+      return card;
+    }
+
+    // モーダルを表示
+    function showModal(gemstone) {
+      const modal = document.getElementById('modal');
+      const modalBody = document.getElementById('modalBody');
+
+      modalBody.innerHTML = `
+        <h2>${gemstone.name}</h2>
+        <p><strong style="color: #667eea;">${gemstone.englishName}</strong></p>
+        <hr style="margin: 15px 0; border: none; border-top: 1px solid #eee;">
+        
+        <div style="margin: 15px 0;">
+          <h3>基本情報</h3>
+          <p><strong>カテゴリー:</strong> ${gemstone.category}</p>
+          <p><strong>レアリティ:</strong> <span class="rarity ${gemstone.rarity}">${gemstone.rarity}</span></p>
+          <p><strong>硬度:</strong> ${gemstone.hardness}</p>
+          <p><strong>色:</strong> ${gemstone.colors.join(', ')}</p>
+        </div>
+
+        <div style="margin: 15px 0;">
+          <h3>説明</h3>
+          <p>${gemstone.description}</p>
+        </div>
+
+        <div style="margin: 15px 0;">
+          <h3>価格相場</h3>
+          <p style="font-size: 1.2em; color: #667eea; font-weight: bold;">
+            ¥${gemstone.priceRange.min.toLocaleString()} - ¥${gemstone.priceRange.max.toLocaleString()} / ${gemstone.priceRange.unit}
+          </p>
+        </div>
+
+        <div style="margin: 15px 0;">
+          <h3>主な産地</h3>
+          <p>${gemstone.origin.join(', ')}</p>
+        </div>
+
+        <div style="margin: 15px 0;">
+          <h3>用途</h3>
+          <p>${gemstone.uses.join(', ')}</p>
+        </div>
+      `;
+
+      modal.classList.add('show');
+    }
+  </script>
+</body>
+</html>
