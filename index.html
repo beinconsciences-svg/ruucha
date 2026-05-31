@@ -277,152 +277,58 @@
   </div>
 
   <script>
-    // 宝石データ
+    // 宝石データ（50種類以上）
     const gemstonesData = [
-      {
-        "id": 1,
-        "name": "ダイヤモンド",
-        "englishName": "Diamond",
-        "category": "炭素鉱物",
-        "rarity": "超レア",
-        "hardness": 10,
-        "colors": ["無色", "黄色", "ピンク", "青"],
-        "priceRange": {
-          "min": 50000,
-          "max": 5000000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "地球上で最も硬い天然鉱物。高い屈折率と透明性が特徴。",
-        "origin": ["ロシア", "ボツワナ", "南アフリカ"],
-        "uses": ["宝飾品", "研磨剤", "工業用途"]
-      },
-      {
-        "id": 2,
-        "name": "ルビー",
-        "englishName": "Ruby",
-        "category": "コランダム",
-        "rarity": "レア",
-        "hardness": 9,
-        "colors": ["赤"],
-        "priceRange": {
-          "min": 10000,
-          "max": 3000000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "赤い色が特徴的な貴石。アルミナに微量のクロムが含まれることで赤色になります。",
-        "origin": ["ミャンマー", "タイ", "スリランカ"],
-        "uses": ["宝飾品", "レーザー"]
-      },
-      {
-        "id": 3,
-        "name": "サファイア",
-        "englishName": "Sapphire",
-        "category": "コランダム",
-        "rarity": "レア",
-        "hardness": 9,
-        "colors": ["青", "ピンク", "黄色", "紫"],
-        "priceRange": {
-          "min": 5000,
-          "max": 2000000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "青い宝石として知られている。実はコランダムの青い変種です。",
-        "origin": ["オーストラリア", "スリランカ", "タイ"],
-        "uses": ["宝飾品", "時計", "光学機器"]
-      },
-      {
-        "id": 4,
-        "name": "エメラルド",
-        "englishName": "Emerald",
-        "category": "ベリル",
-        "rarity": "レア",
-        "hardness": 7.5,
-        "colors": ["緑"],
-        "priceRange": {
-          "min": 8000,
-          "max": 1500000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "緑色が美しい宝石。クロムやバナジウムの影響で緑色になります。",
-        "origin": ["コロンビア", "ザンビア", "ブラジル"],
-        "uses": ["宝飾品"]
-      },
-      {
-        "id": 5,
-        "name": "アメジスト",
-        "englishName": "Amethyst",
-        "category": "水晶",
-        "rarity": "一般的",
-        "hardness": 7,
-        "colors": ["紫"],
-        "priceRange": {
-          "min": 500,
-          "max": 50000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "紫色の水晶。手頃な価格で人気があります。",
-        "origin": ["ウルグアイ", "ブラジル", "ザンビア"],
-        "uses": ["宝飾品", "装飾品"]
-      },
-      {
-        "id": 6,
-        "name": "トパーズ",
-        "englishName": "Topaz",
-        "category": "珪酸塩鉱物",
-        "rarity": "やや一般的",
-        "hardness": 8,
-        "colors": ["無色", "青", "黄色", "ピンク"],
-        "priceRange": {
-          "min": 1000,
-          "max": 200000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "透明度が高く、様々な色があります。熱処理で色が変わることもあります。",
-        "origin": ["ブラジル", "日本", "スリランカ"],
-        "uses": ["宝飾品", "装飾品"]
-      },
-      {
-        "id": 7,
-        "name": "アクアマリン",
-        "englishName": "Aquamarine",
-        "category": "ベリル",
-        "rarity": "やや一般的",
-        "hardness": 7.5,
-        "colors": ["青緑"],
-        "priceRange": {
-          "min": 2000,
-          "max": 300000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "海の色をした宝石。透明度が高く爽やかな印象です。",
-        "origin": ["ブラジル", "ナイジェリア", "パキスタン"],
-        "uses": ["宝飾品"]
-      },
-      {
-        "id": 8,
-        "name": "ガーネット",
-        "englishName": "Garnet",
-        "category": "珪酸塩鉱物",
-        "rarity": "一般的",
-        "hardness": 7,
-        "colors": ["赤", "茶色", "黄色"],
-        "priceRange": {
-          "min": 500,
-          "max": 100000,
-          "currency": "JPY",
-          "unit": "1カラット"
-        },
-        "description": "赤い宝石として古くから知られています。手頃な価格が特徴です。",
-        "origin": ["チェコ", "マダガスカル", "インド"],
-        "uses": ["宝飾品", "研磨剤"]
-      }
+      {"id": 1, "name": "ダイヤモンド", "englishName": "Diamond", "category": "炭素鉱物", "rarity": "超レア", "hardness": 10, "colors": ["無色", "黄色", "ピンク", "青"], "priceRange": {"min": 50000, "max": 5000000, "unit": "1カラット"}, "description": "地球上で最も硬い天然鉱物。高い屈折率と透明性が特徴。", "origin": ["ロシア", "ボツワナ", "南アフリカ"], "uses": ["宝飾品", "研磨剤", "工業用途"]},
+      {"id": 2, "name": "ルビー", "englishName": "Ruby", "category": "コランダム", "rarity": "レア", "hardness": 9, "colors": ["赤"], "priceRange": {"min": 10000, "max": 3000000, "unit": "1カラット"}, "description": "赤い色が特徴的な貴石。アルミナに微量のクロムが含まれることで赤色になります。", "origin": ["ミャンマー", "タイ", "スリランカ"], "uses": ["宝飾品", "レーザー"]},
+      {"id": 3, "name": "サファイア", "englishName": "Sapphire", "category": "コランダム", "rarity": "レア", "hardness": 9, "colors": ["青", "ピンク", "黄色", "紫"], "priceRange": {"min": 5000, "max": 2000000, "unit": "1カラット"}, "description": "青い宝石として知られている。実はコランダムの青い変種です。", "origin": ["オーストラリア", "スリランカ", "タイ"], "uses": ["宝飾品", "時計", "光学機器"]},
+      {"id": 4, "name": "エメラルド", "englishName": "Emerald", "category": "ベリル", "rarity": "レア", "hardness": 7.5, "colors": ["緑"], "priceRange": {"min": 8000, "max": 1500000, "unit": "1カラット"}, "description": "緑色が美しい宝石。クロムやバナジウムの影響で緑色になります。", "origin": ["コロンビア", "ザンビア", "ブラジル"], "uses": ["宝飾品"]},
+      {"id": 5, "name": "アメジスト", "englishName": "Amethyst", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["紫"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "紫色の水晶。手頃な価格で人気があります。", "origin": ["ウルグアイ", "ブラジル", "ザンビア"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 6, "name": "トパーズ", "englishName": "Topaz", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 8, "colors": ["無色", "青", "黄色", "ピンク"], "priceRange": {"min": 1000, "max": 200000, "unit": "1カラット"}, "description": "透明度が高く、様々な色があります。熱処理で色が変わることもあります。", "origin": ["ブラジル", "日本", "スリランカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 7, "name": "アクアマリン", "englishName": "Aquamarine", "category": "ベリル", "rarity": "やや一般的", "hardness": 7.5, "colors": ["青緑"], "priceRange": {"min": 2000, "max": 300000, "unit": "1カラット"}, "description": "海の色をした宝石。透明度が高く爽やかな印象です。", "origin": ["ブラジル", "ナイジェリア", "パキスタン"], "uses": ["宝飾品"]},
+      {"id": 8, "name": "ガーネット", "englishName": "Garnet", "category": "珪酸塩鉱物", "rarity": "一般的", "hardness": 7, "colors": ["赤", "茶色", "黄色"], "priceRange": {"min": 500, "max": 100000, "unit": "1カラット"}, "description": "赤い宝石として古くから知られています。手頃な価格が特徴です。", "origin": ["チェコ", "マダガスカル", "インド"], "uses": ["宝飾品", "研磨剤"]},
+      {"id": 9, "name": "パール（真珠）", "englishName": "Pearl", "category": "有機鉱物", "rarity": "やや一般的", "hardness": 2.5, "colors": ["白", "黒", "ピンク", "金"], "priceRange": {"min": 1000, "max": 500000, "unit": "1粒"}, "description": "貝の中で形成される有機宝石。独特な光沢が特徴です。", "origin": ["日本", "タイ", "オーストラリア"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 10, "name": "オパール", "englishName": "Opal", "category": "酸化鉱物", "rarity": "レア", "hardness": 5.5, "colors": ["虹色", "白", "黒", "赤"], "priceRange": {"min": 3000, "max": 800000, "unit": "1カラット"}, "description": "独特な遊色効果を持つ宝石。光の角度で色が変わります。", "origin": ["オーストラリア", "メキシコ", "エチオピア"], "uses": ["宝飾品"]},
+      {"id": 11, "name": "アレキサンドライト", "englishName": "Alexandrite", "category": "酸化鉱物", "rarity": "超レア", "hardness": 8.5, "colors": ["緑", "赤"], "priceRange": {"min": 20000, "max": 2000000, "unit": "1カラット"}, "description": "昼間は緑色、人工光下では赤色に見える変色性の宝石。", "origin": ["ロシア", "ブラジル", "タイ"], "uses": ["宝飾品"]},
+      {"id": 12, "name": "タンザナイト", "englishName": "Tanzanite", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 6, "colors": ["青", "紫", "赤"], "priceRange": {"min": 5000, "max": 1500000, "unit": "1カラット"}, "description": "タンザニアでのみ採掘される希少な宝石。加熱すると鮮やかな青色になります。", "origin": ["タンザニア"], "uses": ["宝飾品"]},
+      {"id": 13, "name": "トルマリン", "englishName": "Tourmaline", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 7.5, "colors": ["虹色", "赤", "緑", "青", "黒"], "priceRange": {"min": 1000, "max": 300000, "unit": "1カラット"}, "description": "多彩な色を持つ宝石。同じ結晶内に複数の色が現れることもあります。", "origin": ["ブラジル", "アフガニスタン", "アメリカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 14, "name": "ムーンストーン", "englishName": "Moonstone", "category": "長石", "rarity": "やや一般的", "hardness": 6, "colors": ["白", "青", "ピーチ色"], "priceRange": {"min": 500, "max": 100000, "unit": "1カラット"}, "description": "乳白色の光沢が特徴。月のような柔らかな輝きが美しい。", "origin": ["インド", "スリランカ", "アメリカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 15, "name": "サンストーン", "englishName": "Sunstone", "category": "長石", "rarity": "やや一般的", "hardness": 6, "colors": ["オレンジ", "赤", "黄色"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "きらめく光の効果が太陽のように見える宝石。", "origin": ["ノルウェー", "ロシア", "アメリカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 16, "name": "ローズクォーツ", "englishName": "Rose Quartz", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["ピンク"], "priceRange": {"min": 300, "max": 30000, "unit": "1カラット"}, "description": "ピンク色の水晶。愛の石として知られています。", "origin": ["ブラジル", "マダガスカル", "南アフリカ"], "uses": ["宝飾品", "装飾品", "パワーストーン"]},
+      {"id": 17, "name": "アメシスト", "englishName": "Smoky Quartz", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["茶色", "黒"], "priceRange": {"min": 300, "max": 50000, "unit": "1カラット"}, "description": "茶色から黒色の水晶。煙のような透明度が特徴です。", "origin": ["ブラジル", "スイス", "スコットランド"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 18, "name": "シトリン", "englishName": "Citrine", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["黄色", "ゴールド"], "priceRange": {"min": 300, "max": 50000, "unit": "1カラット"}, "description": "黄色い水晶。繁栄と幸運の石として人気があります。", "origin": ["ブラジル", "マダガスカル", "アメリカ"], "uses": ["宝飾品", "装飾品", "パワーストーン"]},
+      {"id": 19, "name": "翡翠（ジェード）", "englishName": "Jade", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 6.5, "colors": ["緑", "白", "黄色", "紫"], "priceRange": {"min": 1000, "max": 500000, "unit": "1カラット"}, "description": "東洋で古くから珍重される宝石。彫刻用途にも用いられます。", "origin": ["中国", "ミャンマー", "カナダ"], "uses": ["宝飾品", "装飾品", "彫刻"]},
+      {"id": 20, "name": "ターコイズ", "englishName": "Turquoise", "category": "リン酸塩鉱物", "rarity": "やや一般的", "hardness": 5, "colors": ["青", "青緑", "緑"], "priceRange": {"min": 500, "max": 100000, "unit": "1カラット"}, "description": "空のような青い色が特徴。古くから装飾品として用いられています。", "origin": ["アメリカ", "イラン", "チベット"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 21, "name": "ラピスラズリ", "englishName": "Lapis Lazuli", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 5, "colors": ["深青", "金色の斑点"], "priceRange": {"min": 1000, "max": 200000, "unit": "1カラット"}, "description": "深い青色に金色の斑点が入る宝石。古代から装飾品として珍重されています。", "origin": ["アフガニスタン", "チリ", "ロシア"], "uses": ["宝飾品", "装飾品", "彫刻"]},
+      {"id": 22, "name": "アズライト", "englishName": "Azurite", "category": "炭酸塩鉱物", "rarity": "レア", "hardness": 3.5, "colors": ["深青"], "priceRange": {"min": 2000, "max": 150000, "unit": "1カラット"}, "description": "深い青色の宝石。マラカイトと共に産出することが多いです。", "origin": ["オーストラリア", "アメリカ", "モロッコ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 23, "name": "マラカイト", "englishName": "Malachite", "category": "炭酸塩鉱物", "rarity": "やや一般的", "hardness": 3.5, "colors": ["緑", "層状模様"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "独特の層状模様を持つ宝石。彫刻やカボション用途に用いられます。", "origin": ["ザンビア", "オーストラリア", "ロシア"], "uses": ["宝飾品", "装飾品", "彫刻"]},
+      {"id": 24, "name": "アゲート", "englishName": "Agate", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["多色", "縞模様"], "priceRange": {"min": 200, "max": 30000, "unit": "1カラット"}, "description": "様々な色と縞模様を持つ水晶。彫刻に適しています。", "origin": ["ブラジル", "ウルグアイ", "インド"], "uses": ["宝飾品", "装飾品", "彫刻"]},
+      {"id": 25, "name": "カーネリアン", "englishName": "Carnelian", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["オレンジ", "赤色"], "priceRange": {"min": 300, "max": 50000, "unit": "1カラット"}, "description": "オレンジ色から赤色の水晶。古代から勇敢さの象徴とされています。", "origin": ["インド", "ブラジル", "ウルグアイ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 26, "name": "アベンチュリン", "englishName": "Aventurine", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["緑", "赤", "青"], "priceRange": {"min": 200, "max": 20000, "unit": "1カラット"}, "description": "金色のきらめきが入った水晶。繁栄の石として知られています。", "origin": ["インド", "ブラジル", "チリ"], "uses": ["宝飾品", "装飾品", "パワーストーン"]},
+      {"id": 27, "name": "クォーツァイト", "englishName": "Quartzite", "category": "水晶", "rarity": "一般的", "hardness": 7, "colors": ["白", "ピンク", "黄色"], "priceRange": {"min": 100, "max": 10000, "unit": "1カラット"}, "description": "水晶が変成した鉱物。硬度が高く耐久性に優れています。", "origin": ["南アフリカ", "ノルウェー", "ブラジル"], "uses": ["宝飾品", "建材"]},
+      {"id": 28, "name": "フローライト", "englishName": "Fluorite", "category": "酸化物", "rarity": "やや一般的", "hardness": 4, "colors": ["虹色", "紫", "緑", "青"], "priceRange": {"min": 500, "max": 100000, "unit": "1カラット"}, "description": "多彩な色を持つ宝石。紫外線下で蛍光を発します。", "origin": ["中国", "南アフリカ", "モンゴル"], "uses": ["宝飾品", "装飾品", "光学機器"]},
+      {"id": 29, "name": "スピネル", "englishName": "Spinel", "category": "酸化物", "rarity": "レア", "hardness": 8, "colors": ["赤", "ピンク", "青", "黒"], "priceRange": {"min": 2000, "max": 500000, "unit": "1カラット"}, "description": "ダイヤモンドと似た光沢を持つ宝石。ルビーと誤認されることもあります。", "origin": ["タイ", "ミャンマー", "スリランカ"], "uses": ["宝飾品"]},
+      {"id": 30, "name": "ガーネット（ピロープ）", "englishName": "Pyrope Garnet", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 7.5, "colors": ["深赤色"], "priceRange": {"min": 500, "max": 100000, "unit": "1カラット"}, "description": "深い赤色が特徴。チェコでは古くから採掘されています。", "origin": ["チェコ", "ブラジル", "南アフリカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 31, "name": "ツァボライト", "englishName": "Tsavorite", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 7, "colors": ["緑"], "priceRange": {"min": 5000, "max": 800000, "unit": "1カラット"}, "description": "濃い緑色のガーネット。エメラルドより透明度が高いことがあります。", "origin": ["タンザニア", "ケニア"], "uses": ["宝飾品"]},
+      {"id": 32, "name": "デマントイドガーネット", "englishName": "Demantoid Garnet", "category": "珪酸塩鉱物", "rarity": "超レア", "hardness": 6.5, "colors": ["緑"], "priceRange": {"min": 10000, "max": 1500000, "unit": "1カラット"}, "description": "ダイヤモンドのような輝きを持つガーネット。非常に稀少です。", "origin": ["ロシア", "マダガスカル", "ナミビア"], "uses": ["宝飾品"]},
+      {"id": 33, "name": "パイライト", "englishName": "Pyrite", "category": "硫化物", "rarity": "一般的", "hardness": 6, "colors": ["金色"], "priceRange": {"min": 100, "max": 10000, "unit": "1カラット"}, "description": "金色に輝く鉱物。別名『愚人の金』。", "origin": ["ペルー", "スペイン", "イタリア"], "uses": ["装飾品", "工業用"]},
+      {"id": 34, "name": "ヘマタイト", "englishName": "Hematite", "category": "酸化物", "rarity": "一般的", "hardness": 6, "colors": ["黒", "銀色"], "priceRange": {"min": 200, "max": 20000, "unit": "1カラット"}, "description": "黒色の鉱物。磁性を持つものがあります。", "origin": ["オーストラリア", "ブラジル", "スウェーデン"], "uses": ["宝飾品", "装飾品", "パワーストーン"]},
+      {"id": 35, "name": "シャッタカイト", "englishName": "Shattuckite", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 3.5, "colors": ["青"], "priceRange": {"min": 2000, "max": 100000, "unit": "1カラット"}, "description": "希少な青色の鉱物。透明度が高い標本は非常に珍重されます。", "origin": ["アメリカ", "ザンビア"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 36, "name": "クリソコラ", "englishName": "Chrysocolla", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 2.5, "colors": ["青", "青緑"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "青緑色の美しい宝石。繋ぎ材として機能しています。", "origin": ["ペルー", "アメリカ", "ザンビア"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 37, "name": "ブラックトルマリン", "englishName": "Black Tourmaline", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 7.5, "colors": ["黒"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "黒色のトルマリン。保護の石として知られています。", "origin": ["ブラジル", "アフガニスタン", "パキスタン"], "uses": ["宝飾品", "装飾品", "パワーストーン"]},
+      {"id": 38, "name": "グリーンアパタイト", "englishName": "Green Apatite", "category": "リン酸塩鉱物", "rarity": "やや一般的", "hardness": 5, "colors": ["緑"], "priceRange": {"min": 1000, "max": 100000, "unit": "1カラット"}, "description": "緑色のアパタイト。透明度が高い標本は宝石として用いられます。", "origin": ["ブラジル", "メキシコ", "スペイン"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 39, "name": "ブルーアパタイト", "englishName": "Blue Apatite", "category": "リン酸塩鉱物", "rarity": "やや一般的", "hardness": 5, "colors": ["青"], "priceRange": {"min": 1000, "max": 100000, "unit": "1カラット"}, "description": "青色のアパタイト。明るい輝きが特徴です。", "origin": ["ブラジル", "モロッコ", "メキシコ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 40, "name": "ベニトアイト", "englishName": "Benitoite", "category": "珪酸塩鉱物", "rarity": "超レア", "hardness": 6, "colors": ["青", "���"], "priceRange": {"min": 20000, "max": 500000, "unit": "1カラット"}, "description": "カリフォルニアの州石。紫外線下で強く蛍光を発します。", "origin": ["アメリカ（カリフォルニア）"], "uses": ["宝飾品", "コレクター向け"]},
+      {"id": 41, "name": "パライバトルマリン", "englishName": "Paraiba Tourmaline", "category": "珪酸塩鉱物", "rarity": "超レア", "hardness": 7, "colors": ["ネオンブルー", "ターコイズ"], "priceRange": {"min": 50000, "max": 3000000, "unit": "1カラット"}, "description": "ネオンのような鮮やかなブルーが特徴。最近発見された希少な宝石です。", "origin": ["ブラジル（パライバ州）", "ナイジェリア"], "uses": ["宝飾品"]},
+      {"id": 42, "name": "パダラシャサファイア", "englishName": "Padparadscha Sapphire", "category": "コランダム", "rarity": "超レア", "hardness": 9, "colors": ["ピンク・オレンジ"], "priceRange": {"min": 100000, "max": 5000000, "unit": "1カラット"}, "description": "ピンクとオレンジが混ざったレアなサファイア。蓮の花の色という意味です。", "origin": ["スリランカ", "タンザニア"], "uses": ["宝飾品"]},
+      {"id": 43, "name": "イディアクロサイト", "englishName": "Idocrase", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 6.5, "colors": ["緑", "黄色", "青"], "priceRange": {"min": 1000, "max": 80000, "unit": "1カラット"}, "description": "様々な色を持つ珪酸塩鉱物。透明度が高い標本は宝石として用いられます。", "origin": ["イタリア", "スイス", "メキシコ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 44, "name": "ゾイサイト", "englishName": "Zoisite", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 6.5, "colors": ["青", "緑", "ピンク"], "priceRange": {"min": 2000, "max": 200000, "unit": "1カラット"}, "description": "様々な色を持つ宝石。タンザナイトはこの鉱物の変種です。", "origin": ["ノルウェー", "スイス", "オーストリア"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 45, "name": "スコレサイト", "englishName": "Scolecite", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 5, "colors": ["白", "無色"], "priceRange": {"min": 500, "max": 30000, "unit": "1カラット"}, "description": "繊維状の結晶を持つ白色の鉱物。採掘地が限定されています。", "origin": ["インド", "アイスランド", "アメリカ"], "uses": ["装飾品", "コレクター向け"]},
+      {"id": 46, "name": "アポフィライト", "englishName": "Apophyllite", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 4.5, "colors": ["白", "緑", "ピンク"], "priceRange": {"min": 1000, "max": 100000, "unit": "1カラット"}, "description": "透明度が高く、完全な立方体結晶を形成することで知られています。", "origin": ["インド", "アイスランド", "アメリカ"], "uses": ["宝飾品", "装飾品", "コレクター向け"]},
+      {"id": 47, "name": "カイヤナイト", "englishName": "Kyanite", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 4, "colors": ["青", "緑", "黒"], "priceRange": {"min": 1000, "max": 150000, "unit": "1カラット"}, "description": "方向により硬度が異なる珍しい宝石。深い青色が特徴です。", "origin": ["ブラジル", "スイス", "アメリカ"], "uses": ["宝飾品", "装飾品", "工業用"]},
+      {"id": 48, "name": "シリマナイト", "englishName": "Sillimanite", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 6.5, "colors": ["黄色", "緑", "茶色"], "priceRange": {"min": 2000, "max": 200000, "unit": "1カラット"}, "description": "変成岩に産する珍しい宝石。猫目効果を示すことがあります。", "origin": ["スリランカ", "インド", "ブラジル"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 49, "name": "アンダリュサイト", "englishName": "Andalusite", "category": "珪酸塩鉱物", "rarity": "レア", "hardness": 7.5, "colors": ["黄色", "褐色", "緑"], "priceRange": {"min": 3000, "max": 300000, "unit": "1カラット"}, "description": "色が変わる二色性を持つ宝石。多角的な輝きが特徴です。", "origin": ["スペイン", "ブラジル", "スリランカ"], "uses": ["宝飾品", "装飾品"]},
+      {"id": 50, "name": "スタウロライト", "englishName": "Staurolite", "category": "珪酸塩鉱物", "rarity": "やや一般的", "hardness": 7, "colors": ["茶色", "黒"], "priceRange": {"min": 500, "max": 50000, "unit": "1カラット"}, "description": "十字架の形の双晶を形成することで知られています。幸運の石として知られています。", "origin": ["アメリカ", "フランス", "スコットランド"], "uses": ["宝飾品", "装飾品", "パワーストーン"]}
     ];
 
     let allGemstones = gemstonesData;
